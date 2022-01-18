@@ -65,19 +65,19 @@ public class Main {
         System.out.printf("You entered %s invalid grades.\n", invalidGrades.size());
         System.out.println();
 
-        System.out.printf("Highest grade: %s (%s) \n", maxGrade,letterGrade(maxGrade));
-        System.out.printf("Lowest grade: %s (%s) \n", minGrade, letterGrade(minGrade));
-        System.out.printf("Average: %s (%s) \n", averageGrade, letterGrade(averageGrade));
+        System.out.printf("Highest grade: %s (%s) \n", wholeNumFinder(maxGrade),letterGrade(maxGrade));
+        System.out.printf("Lowest grade: %s (%s) \n", wholeNumFinder(minGrade), letterGrade(minGrade));
+        System.out.printf("Average: %s (%s) \n", wholeNumFinder(averageGrade), letterGrade(averageGrade));
         System.out.println();
 
         System.out.printf("Here are the %s valid grades:\n", validGrades.size());
         for (float grade: validGrades) {
-            System.out.printf("%s (%s)\n\n", grade, letterGrade(grade));
+            System.out.printf("%s (%s)\n\n", wholeNumFinder(grade), letterGrade(grade));
         }
 
         System.out.printf("Here are the %s invalid grades:\n", invalidGrades.size());
         for (float grade: invalidGrades) {
-            System.out.printf("%s\n", grade);
+            System.out.printf("%s\n", wholeNumFinder(grade));
         }
     }
 
@@ -107,4 +107,26 @@ public class Main {
 
         return (actualGrade);
     }
+
+    static String wholeNumFinder(float num) {
+        /*
+          https://stackoverflow.com/questions/14799943/how-to-check-if-number-is-a-decimal#:~:text=Use%20the%20modulus%20operator%20to%20check%20if%20there%20is%20a%20remainder.&text=int%20will%20not%20hold%20a,if%20decimals%20are%20being%20dropped.
+
+          I used this stackoverflow forum discussion to find how to determine if a number was whole, meaning without any numbers after the
+          decimal.
+          By used the modulus operator, we can determine if a number can be represented as an integer by doing Mod(0).
+          A whole number will return 0, without any decimals. Any float that has numbers after the decimal will return a number other than 0.
+         */
+
+        String newNum = null;
+        if (num % 1 == 0) {
+            newNum = String.format("%.0f", num);
+        }
+        else {
+            newNum = Float.toString(num);
+        }
+
+        return (newNum);
+    }
+    
 }
