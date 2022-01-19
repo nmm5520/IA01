@@ -24,6 +24,13 @@ public class Main {
                 newInput = userInput.nextLine();
                 cont = newInput;
 
+                /*
+                  https://www.geeksforgeeks.org/float-parsefloat-method-in-java-with-examples/
+
+                  I used this source to learn how to use parseFloat.
+                  I have previously used parseInt, but did not know how to parse input for a float.
+                  I decided to parse the input for a float because the input also includes grades with decimals.
+                 */
                 float newGrade = Float.parseFloat(newInput);
 
                 if ((newGrade >= 0.0 && newGrade <= 100.0) && !cont.equals("-1")) {
@@ -72,9 +79,10 @@ public class Main {
 
         System.out.printf("Here are the %s valid grades:\n", validGrades.size());
         for (float grade: validGrades) {
-            System.out.printf("%s (%s)\n\n", wholeNumFinder(grade), letterGrade(grade));
+            System.out.printf("%s (%s)\n", wholeNumFinder(grade), letterGrade(grade));
         }
 
+        System.out.println();
         System.out.printf("Here are the %s invalid grades:\n", invalidGrades.size());
         for (float grade: invalidGrades) {
             System.out.printf("%s\n", wholeNumFinder(grade));
