@@ -36,15 +36,11 @@ public class Main {
                 if ((newGrade >= 0.0 && newGrade <= 100.0) && !cont.equals("-1")) {
                     validGrades.add(newGrade);
                     break;
-                }
-
-                else if ((newGrade < 0.0 || newGrade > 100.0) && !cont.equals("-1")) {
+                } else if ((newGrade < 0.0 || newGrade > 100.0) && !cont.equals("-1")) {
                     System.out.print("Error. Grade must be between 0 and 100; or -1 to finish\n");
                     invalidGrades.add((newGrade));
                     break;
-                }
-
-                else if (cont.equals("-1")) {
+                } else if (cont.equals("-1")) {
                     break;
                 }
             }
@@ -61,30 +57,30 @@ public class Main {
         float newTotal = total;
         float sum = 0;
 
-        for (Float grade: validGrades) {
+        for (Float grade : validGrades) {
             sum += grade;
         }
 
-        float averageGrade = (sum/newTotal);
+        float averageGrade = (sum / newTotal);
 
         System.out.println();
         System.out.printf("You entered %s valid grades.\n", validGrades.size());
         System.out.printf("You entered %s invalid grades.\n", invalidGrades.size());
         System.out.println();
 
-        System.out.printf("Highest grade: %s (%s) \n", wholeNumFinder(maxGrade),letterGrade(maxGrade));
+        System.out.printf("Highest grade: %s (%s) \n", wholeNumFinder(maxGrade), letterGrade(maxGrade));
         System.out.printf("Lowest grade: %s (%s) \n", wholeNumFinder(minGrade), letterGrade(minGrade));
         System.out.printf("Average: %s (%s) \n", wholeNumFinder(averageGrade), letterGrade(averageGrade));
         System.out.println();
 
         System.out.printf("Here are the %s valid grades:\n", validGrades.size());
-        for (float grade: validGrades) {
+        for (float grade : validGrades) {
             System.out.printf("%s (%s)\n", wholeNumFinder(grade), letterGrade(grade));
         }
 
         System.out.println();
         System.out.printf("Here are the %s invalid grades:\n", invalidGrades.size());
-        for (float grade: invalidGrades) {
+        for (float grade : invalidGrades) {
             System.out.printf("%s\n", wholeNumFinder(grade));
         }
     }
@@ -129,12 +125,11 @@ public class Main {
         String newNum = null;
         if (num % 1 == 0) {
             newNum = String.format("%.0f", num);
-        }
-        else {
+        } else {
             newNum = Float.toString(num);
         }
 
         return (newNum);
     }
-    
+
 }
